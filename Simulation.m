@@ -19,12 +19,11 @@ sampleRate = 100; % Hz
 
 object = createObjectPrompt(shapes, dragCoeficients);
 
-%groundTruthData = calculateGroundTruth(object, simulationTime, sampleRate);
+groundTruthData = calculateGroundTruth(object, simulationTime, sampleRate);
 
 measurements = createMeasurements(groundTruthData);
 stateEstimationData = calculateStateEstimation(object, sampleRate, measurements);
 
-
 %% Plot
 
-% plotData(groundTruthData, SimulationData);
+plotResults(groundTruthData, measurements, stateEstimationData);

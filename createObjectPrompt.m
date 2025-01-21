@@ -55,7 +55,7 @@ function object = createObjectPrompt(shapes, dragCoeficients)
             disp('Invalid input! Area must be greater than zero.');
         end
     end
-
+    clc;
     % Final setup message
     disp('Everything is set up.');
 end
