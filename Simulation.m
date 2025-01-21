@@ -21,7 +21,7 @@ object = createObjectPrompt(shapes, dragCoeficients);
 
 %groundTruthData = calculateGroundTruth(object, simulationTime, sampleRate);
 
-measurements = createMeasurements();
+measurements = createMeasurements(groundTruthData);
 stateEstimationData = calculateStateEstimation(object, sampleRate, measurements);
 
 
