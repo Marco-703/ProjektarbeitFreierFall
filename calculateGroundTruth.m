@@ -36,11 +36,14 @@ function groundTruthData = calculateGroundTruth(inputObject, simulationTime, sam
         k4v = dt * acceleration(v(i) + k3v, Cd, A, m);
         k4y = dt * (v(i) + k3v);
 
+        v(i+1) = v(i) + (1/6) * (k1v + 2 * k2v + 2 * k3v + k4v);
+        y(i+1) = y(i) + (1/6) * (k1y + 2 * k2y + 2 * k3y + k4y);
+
         % Geschwindigkeits- und Höhenupdate
         currentState.time = i * dt;
-        currentState.velocity = v(i) + (1/6) * (k1v + 2 * k2v + 2 * k3v + k4v);
-        currentState.height = y(i) + (1/6) * (k1y + 2 * k2y + 2 * k3y + k4y);
-        currentState.dragForce = 0.5 * rho * Cd * A * v(i)^2;  % Luftwiderstandskraft
+        currentState.velocity = v(i+1);
+        currentState.height = y(i+1);
+        currentState.dragForce = 0.5 * rho * Cd * A * v(i+1)^2;  % Luftwiderstandskraft
 
         groundTruthData(i) = currentState;
     end
