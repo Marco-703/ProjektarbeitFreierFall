@@ -1,4 +1,7 @@
-function plotResults(groundTruthData, measurements, stateEstimationData)
+function plotResults(object, groundTruthData, measurements, stateEstimationData)
+
+    % Extract shape name
+    shape = object.name;
     % Extract data length
     n = length(groundTruthData);
 
@@ -31,10 +34,10 @@ function plotResults(groundTruthData, measurements, stateEstimationData)
     figure;
     plot(t, F_drag, 'b', 'LineWidth', 1.5);
     hold on;
-    plot(t, F_drag_estimated, 'r--', 'LineWidth', 1.5);
+    plot(t, F_drag_estimated, 'r', 'LineWidth', 1.5);
     hold off;
     grid on;
-    title('Drag Force vs Time');
+    title([shape ' - Drag Force vs Time']);
     xlabel('Time (s)');
     ylabel('Drag Force (N)');
     legend('F_{drag}', 'F_{drag, estimated}');
@@ -43,11 +46,11 @@ function plotResults(groundTruthData, measurements, stateEstimationData)
     figure;
     plot(t, height, 'b', 'LineWidth', 1.5);
     hold on;
-    plot(t, height_measurement, 'g.', 'MarkerSize', 10);
-    plot(t, height_estimated, 'r--', 'LineWidth', 1.5);
+    plot(t, height_measurement, 'g', 'LineWidth', 1.5);
+    plot(t, height_estimated, 'r', 'LineWidth', 1.5);
     hold off;
     grid on;
-    title('Height vs Time');
+    title([shape ' - Height vs Time']);
     xlabel('Time (s)');
     ylabel('Height (m)');
     legend('Height', 'Height Measurement', 'Height Estimated');
@@ -56,10 +59,10 @@ function plotResults(groundTruthData, measurements, stateEstimationData)
     figure;
     plot(t, velocity, 'b', 'LineWidth', 1.5);
     hold on;
-    plot(t, velocity_estimated, 'r--', 'LineWidth', 1.5);
+    plot(t, velocity_estimated, 'r', 'LineWidth', 1.5);
     hold off;
     grid on;
-    title('Velocity vs Time');
+    title([shape ' - Velocity vs Time']);
     xlabel('Time (s)');
     ylabel('Velocity (m/s)');
     legend('Velocity', 'Velocity Estimated');

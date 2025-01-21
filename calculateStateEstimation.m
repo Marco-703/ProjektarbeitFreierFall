@@ -8,14 +8,14 @@ function stateEstimationData = calculateStateEstimation(object, sampleRate, meas
   %% Kalman Filter properties
     x = [0; 0; 0];    % state
     P = [             % covariance
-        10, 0, 0; 
-        0, 10, 0; 
-        0, 0, 10
+        0.5, 0, 0; 
+        0, 0.5, 0; 
+        0, 0, 0.5
         ];  
     
     F = [               % State transition matrix
         1, dt, 0; 
-        0, 1, -1 * (dt/object.mass); 
+        0, 1, dt/object.mass; 
         0, 0, 1
         ];
     B = [0; dt; 0];     % Input effec matrix
@@ -23,7 +23,8 @@ function stateEstimationData = calculateStateEstimation(object, sampleRate, meas
     H = [1, 0, 0]; 
     I = eye(3);                        % Identity matrix
 
-    Q = process_covariance * I;
+    Q = diag([1e-3, 1e-3, 1e-9]);
+
     R = sensor_covariance;
 
     u = g;  % External input
@@ -35,7 +36,7 @@ function stateEstimationData = calculateStateEstimation(object, sampleRate, meas
         z = measurements(i);
 
         % Prediction step
-        x = F * x;
+        x = F * x + B * u;
         P = F * P * F' + Q;
         % Update step
         K = P * H' * inv(H * P * H' + R);

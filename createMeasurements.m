@@ -5,7 +5,7 @@ function measurements = createMeasurements(groundTruthData)
 
     for i = 1 : length(groundTruthData)
         height = groundTruthData(i).height;
-        randomNoise = sensor_covariance * rand - (0.5 * sensor_covariance);
+        randomNoise = sqrt(sensor_covariance) * randn();  % randn() generates noise with mean 0 and variance 1
         measurements(i) = height + randomNoise;
     end
 end
