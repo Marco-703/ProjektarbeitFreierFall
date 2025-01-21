@@ -12,15 +12,17 @@ dragCoeficients = [1.05, 0.47, 1.2, 0.42, 0.5]; % Drag coefficients
 
 %% Parameters
 
-initialHeight = 100; % height in meters
+simulationTime = 10; % time in seconds
 sampleRate = 100; % Hz
 
 %% Create an object and simulate
 
 object = createObjectPrompt(shapes, dragCoeficients);
 
-%groundTruthData = calculateGroundTruth(object, initialHeight, sampleRate);
-%simulationData = simulate(object, initialHeight, sampleRate, groundTruthData);
+%groundTruthData = calculateGroundTruth(object, simulationTime, sampleRate);
+
+%createMeasurements();
+%simulationData = simulate(object, simulationTime, sampleRate, groundTruthData);
 
 %% Plot
 
