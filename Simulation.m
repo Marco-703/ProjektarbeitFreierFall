@@ -3,6 +3,7 @@ close all; clear; clc;
 %% Includes
 
 addpath('Datatypes');
+addpath('src');
 
 
 %% Define shapes
