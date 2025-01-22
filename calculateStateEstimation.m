@@ -23,7 +23,7 @@ function stateEstimationData = calculateStateEstimation(object, sampleRate, meas
     H = [1, 0, 0]; 
     I = eye(3);                        % Identity matrix
 
-    Q = diag([1e-3, 1e-3, 1e-9]);
+    Q = diag([1e-3, 1e-6, 0.05]);
 
     R = sensor_covariance;
 

@@ -17,12 +17,14 @@ sampleRate = 100; % Hz
 
 %% Create an object and simulate
 
-%object = createObjectPrompt(shapes, dragCoeficients);
+object = createObjectPrompt(shapes, dragCoeficients);
+%{
 object = createObjectStruct();
 object.area = 0.05;
-object.mass = 1;
+object.mass = 2.5;
 object.dragCoefficent = 0.47;
 object.name = 'Sphere';
+%}
 
 groundTruthData = calculateGroundTruth(object, simulationTime, sampleRate);
 
